@@ -56,7 +56,7 @@ public class Service{{ name|capitalize }} extends {{ base_service_class }} {
         return intent;
     }
     
-    public void onReceive(Context context, Intent intent) {
+    static public void onReceive(Context context, Intent intent) {
         Intent intent = new Intent(ctx, Service{{ name|capitalize }}.class);
         String argument = ctx.getFilesDir().getAbsolutePath() + "/app";
         intent.putExtra("androidPrivate", ctx.getFilesDir().getAbsolutePath());
