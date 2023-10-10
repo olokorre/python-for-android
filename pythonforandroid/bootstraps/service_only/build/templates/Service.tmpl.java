@@ -82,7 +82,7 @@ public class Service{{ name|capitalize }} extends PythonService {
         intent.putExtra("pythonHome", argument);
         intent.putExtra("androidUnpack", argument);
         intent.putExtra("pythonPath", argument + ":" + argument + "/lib");
-        intent.putExtra("pythonServiceArgument", '');
+        intent.putExtra("pythonServiceArgument", "");
         intent.putExtra("smallIconName", "");
         intent.putExtra("contentTitle", "Serviço de bilhetagem eletrônica");
         intent.putExtra("contentText", "Serviço de bilhetagem eletrônica está ativo e operante!");
