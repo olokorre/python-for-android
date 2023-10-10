@@ -61,7 +61,7 @@ public class Service{{ name|capitalize }} extends {{ base_service_class }} {
         String app_root =  package_root + "/app";
         Intent intent = new Intent(context, ServiceMoviticket.class);
         String argument = context.getFilesDir().getAbsolutePath() + "/app";
-        intent.putExtra("androidPrivate", ctx.getFilesDir().getAbsolutePath());
+        intent.putExtra("androidPrivate", context.getFilesDir().getAbsolutePath());
         intent.putExtra("androidArgument", argument);
         intent.putExtra("serviceTitle", "{{ args.name }}");
         intent.putExtra("serviceEntrypoint", "{{ entrypoint }}");
