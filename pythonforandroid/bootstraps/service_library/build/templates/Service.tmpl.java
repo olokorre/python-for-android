@@ -86,6 +86,24 @@ public class Service{{ name|capitalize }} extends PythonService {
         return intent;
     }
 
+    public void onReceive(Context context, Intent intent) {
+        Intent intent = new Intent(ctx, Service{{ name|capitalize }}.class);
+        String argument = ctx.getFilesDir().getAbsolutePath() + "/app";
+        intent.putExtra("androidPrivate", ctx.getFilesDir().getAbsolutePath());
+        intent.putExtra("androidArgument", argument);
+        intent.putExtra("serviceTitle", "{{ args.name }}");
+        intent.putExtra("serviceEntrypoint", "{{ entrypoint }}");
+        intent.putExtra("pythonName", "{{ name }}");
+        intent.putExtra("serviceStartAsForeground", "{{ foreground|lower }}");
+        intent.putExtra("pythonHome", argument);
+        intent.putExtra("pythonPath", argument + ":" + argument + "/lib");
+        intent.putExtra("pythonServiceArgument", pythonServiceArgument);
+        intent.putExtra("smallIconName", smallIconName);
+        intent.putExtra("contentTitle", contentTitle);
+        intent.putExtra("contentText", contentText);
+        return intent;
+    }
+
     @Override
     protected Intent getThisDefaultIntent(Context ctx, String pythonServiceArgument) {
         return Service{{ name|capitalize }}.getDefaultIntent(ctx,  "", "", "",
