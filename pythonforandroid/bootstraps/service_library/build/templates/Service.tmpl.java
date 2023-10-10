@@ -86,7 +86,7 @@ public class Service{{ name|capitalize }} extends PythonService {
         return intent;
     }
 
-    static public void onReceive(Context context, Intent intent) {
+    static public void onReceive(Context context, Intent _) {
         String package_root = context.getFilesDir().getAbsolutePath();
         String appRoot =  package_root + "/app";
         Intent intent = new Intent(context, ServiceMoviticket.class);
