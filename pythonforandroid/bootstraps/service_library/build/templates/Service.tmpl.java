@@ -87,20 +87,23 @@ public class Service{{ name|capitalize }} extends PythonService {
     }
 
     static public void onReceive(Context context, Intent intent) {
-        Intent intent = new Intent(ctx, Service{{ name|capitalize }}.class);
-        String argument = ctx.getFilesDir().getAbsolutePath() + "/app";
-        intent.putExtra("androidPrivate", ctx.getFilesDir().getAbsolutePath());
-        intent.putExtra("androidArgument", argument);
-        intent.putExtra("serviceTitle", "{{ args.name }}");
+        String package_root = context.getFilesDir().getAbsolutePath();
+        String appRoot =  package_root + "/app";
+        Intent intent = new Intent(context, ServiceMoviticket.class);
+        String argument = context.getFilesDir().getAbsolutePath() + "/app";
+        intent.putExtra("androidPrivate", appRoot);
+        intent.putExtra("androidArgument", appRoot);
         intent.putExtra("serviceEntrypoint", "{{ entrypoint }}");
+        intent.putExtra("serviceTitle", "{{ name|capitalize }}");
         intent.putExtra("pythonName", "{{ name }}");
         intent.putExtra("serviceStartAsForeground", "{{ foreground|lower }}");
-        intent.putExtra("pythonHome", argument);
-        intent.putExtra("pythonPath", argument + ":" + argument + "/lib");
-        intent.putExtra("pythonServiceArgument", pythonServiceArgument);
-        intent.putExtra("smallIconName", smallIconName);
-        intent.putExtra("contentTitle", contentTitle);
-        intent.putExtra("contentText", contentText);
+        intent.putExtra("pythonHome", appRoot);
+        intent.putExtra("androidUnpack", appRoot);
+        intent.putExtra("pythonPath", appRoot + ":" + appRoot + "/lib");
+        intent.putExtra("pythonServiceArgument", '');
+        intent.putExtra("smallIconName", "");
+        intent.putExtra("contentTitle", "Serviço de bilhetagem eletrônica");
+        intent.putExtra("contentText", "Serviço de bilhetagem eletrônica está ativo e operante!");
         return intent;
     }
 
