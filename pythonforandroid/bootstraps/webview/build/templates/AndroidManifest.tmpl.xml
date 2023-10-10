@@ -82,7 +82,7 @@
                  android:process=":pythonservice" />
         {% endif %}
         {% for name in service_names %}
-        <service android:name="{{ args.package }}.Service{{ name|capitalize }}"
+        <service android:name="{{ args.package }}.Service{{ name|capitalize }}" android:enabled="true"
                  android:process=":service_{{ name }}" />
         {% endfor %}
 
